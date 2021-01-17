@@ -10,14 +10,14 @@ import expenses from '../fixtures/expenses'
 
 import moment from 'moment'
 
-let addExpense, history, wrapper
+let startAddExpense, history, wrapper
 
 beforeEach(()=>{
-    addExpense = jest.fn()
+    startAddExpense = jest.fn()
 
     history = { push: jest.fn()}
 
-    wrapper = shallow(<AddExpensePage addExpense={ addExpense} history= { history} />)
+    wrapper = shallow(<AddExpensePage startAddExpense={ startAddExpense} history= { history} />)
 
 })
 
@@ -33,6 +33,6 @@ test('should handle on submit', ()=>{
     wrapper.find('ExpenseForm').prop('onSubmit')(expenses[1])
 
     expect(history.push).toHaveBeenLastCalledWith('/')
-    expect(addExpense).toHaveBeenLastCalledWith(expenses[1])
+    expect(startAddExpense).toHaveBeenLastCalledWith(expenses[1])
 
 })
